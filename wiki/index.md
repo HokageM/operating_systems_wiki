@@ -1,0 +1,184 @@
+# Index
+_Last updated: 2026-09-30 · 5 sources · 167 pages_
+
+## Overview
+- [[overview]] — the module at a glance: chapter map, big picture, recurring themes
+
+## Topics
+- [[operating-system-basics]] — what an OS is, its goals, tasks, kernel and privilege modes · ch.01 · 1 source
+- [[interrupts-and-io]] — interrupts, traps, ISRs, prioritisation and the three I/O techniques · ch.01 · 1 source
+- [[processes]] — the process as the unit of execution: PCB, states, creation, switching · ch.01 · 1 source
+- [[interprocess-communication]] — how isolated processes exchange data and synchronise · ch.01 · 2 sources
+- [[threads]] — the cheap unit of execution inside a process: TCB, switching, SMT · ch.02 · 1 source
+- [[concurrency-and-synchronisation]] — conflicts, race conditions, mutual exclusion, locks, semaphores · ch.03 · 1 source
+- [[deadlocks]] — the four conditions, detection, prevention, avoidance and recovery · ch.03 · 1 source
+- [[memory-management]] — the four tasks, the hierarchy, partitioning, fragmentation and paging · ch.04 · 1 source
+- [[virtual-memory]] — paging plus the Present bit: page faults, TLB, replacement, working sets · ch.04 · 1 source
+- [[scheduling]] — how the CPU is assigned: goals, preemption, and the four strategies · ch.05 · 1 source
+- [[file-systems]] — persistent storage: files, directories, allocation methods and RAID · ch.05 · 1 source
+
+## Concepts
+
+- [[address-translation]] — virtual address in, physical address out; page number is an index, offset passes through · ch.04
+- [[address-width-calculation]] — powers of two: sizes, bit widths, page and table counts · ch.04
+- [[ageing]] — raise a waiting process’s priority with its age; the cure for starvation · ch.05
+- [[asynchronous-file-access]] — non-blocking read and write; the process continues meanwhile · ch.05
+- [[atomic-operation]] — executed completely or not at all; cannot be interrupted · ch.03
+- [[base-and-limit-register]] — start and end address of a partition; protection under partitioning · ch.04
+- [[bios]] — firmware that checks the hardware and loads the OS into RAM · ch.01
+- [[booting]] — loading the OS until the machine is ready for operation · ch.01
+- [[cache]] — fast intermediate memory between main memory and CPU; hit, miss, line, eviction · ch.04
+- [[clock-interrupt]] — the periodic interrupt that ends a time slice and invokes the scheduler · ch.05
+- [[condition-variable]] — wait until a predicate holds; always tied to a mutex · ch.03
+- [[conflict]] — two or more processes access the same resource concurrently · ch.03
+- [[consumable-and-reusable-resources]] — resources that are used up vs. returned unchanged · ch.03
+- [[context-switch]] — saving and restoring program state around a handler; not a process switch · ch.01
+- [[contiguous-allocation]] — a file as a run of adjacent blocks; fast, but cannot grow · ch.05
+- [[cooperative-scheduling]] — the CPU is given up voluntarily; correctness depends on every process · ch.05
+- [[copy-on-write]] — share memory after fork, copy a segment only on write · ch.01
+- [[cpu-utilisation]] — process time divided by total time · ch.01
+- [[critical-section]] — program section accessing a shared resource; one process at a time · ch.03
+- [[deadlock]] — every process of a set waits for an event only that set can cause · ch.03
+- [[deadlock-avoidance]] — grant a request only if the state stays safe · ch.03
+- [[deadlock-detection]] — find deadlocks after the fact, by graph cycle or by marking · ch.03
+- [[deadlock-prevention]] — make one of the four conditions structurally impossible · ch.03
+- [[deadlock-recovery]] — abort, successive abort, or checkpoint and roll back · ch.03
+- [[demand-paging]] — load a page only when a page fault demands it · ch.04
+- [[device-driver]] — kernel component that hides device peculiarities behind an interface · ch.01
+- [[direct-memory-access]] — block transfer directly between device and memory · ch.01
+- [[directory]] — structures all files of a file system into a hierarchy · ch.05
+- [[dirty-page]] — modified since loading; must be written back before its frame is reused · ch.04
+- [[disk-access-time]] — seek + rotation + transfer; why random access is ~50× slower · ch.05
+- [[disk-block]] — the unit of I/O; the block-size trade-off and internal fragmentation · ch.05
+- [[disk-fragmentation]] — a file’s blocks scattered over the disk; sequential access becomes random · ch.05
+- [[dispatcher]] — the program that realises the switching between processes · ch.01
+- [[dynamic-partitioning]] — variant 2: number, start and size of partitions change at runtime · ch.04
+- [[exec]] — overlay the running program with a new one; returns only on error · ch.01
+- [[file]] — logical unit of information on external media, with a name and attributes · ch.05
+- [[file-access-types]] — sequential vs. direct access · ch.05
+- [[file-allocation-table]] — the block chain in one medium-wide table, always resident · ch.05
+- [[file-management-system]] — the OS component that unifies persistent storage; transparency · ch.05
+- [[file-metadata]] — the file attributes: rights, type, size, timestamps · ch.05
+- [[file-structures]] — unstructured byte sequences vs. structured records · ch.05
+- [[file-system-architecture]] — the five layers from device driver up to the access methods · ch.05
+- [[fork]] — create a copy of the calling process; returns 0 / child PID / −1 · ch.01
+- [[fragmentation]] — internal = inside an area, external = between areas · ch.04
+- [[hit-rate]] — share of accesses served by a fast level; drives every access-time calculation · ch.04
+- [[hot-spare-and-hot-swap]] — a reserve disk vs. replacing disks during operation · ch.05
+- [[interrupt]] — signal that interrupts normal execution to run a different processing · ch.01
+- [[interrupt-prioritisation]] — software polling vs. hardware circuit; sequential vs. nested · ch.01
+- [[interrupt-service-routine]] — the handler executed on the occasion of an interrupt · ch.01
+- [[interrupt-vector-table]] — maps interrupt numbers to ISR start addresses · ch.01
+- [[journaling-file-system]] — write the change to a journal first; consistency after a crash · ch.05
+- [[kernel]] — lowest software layer, with direct hardware access · ch.01
+- [[linked-list-allocation]] — each block points to the next; grows freely, random access is O(n) · ch.05
+- [[livelock]] — processes change state continuously but make no progress · ch.03
+- [[local-and-global-page-replacement]] — own pages and fixed frames vs. all pages and dynamic frames · ch.04
+- [[locality]] — data in use now is very likely needed again soon; temporal and spatial · ch.01
+- [[lock]] — the `lock()`/`unlock()` interface every mutual-exclusion mechanism implements · ch.03
+- [[logical-volume-manager]] — logical volumes spanning several physical drives, resizable at runtime · ch.05
+- [[memory-hierarchy]] — registers to disk: speed and cost down, capacity and latency up · ch.04
+- [[memory-management-unit]] — the hardware that translates every address and raises page faults · ch.04
+- [[memory-mapped-file]] — a file mapped into the virtual address space; no read()/write() · ch.05
+- [[memory-technologies]] — RAM, ROM, SRAM, DRAM and why the hierarchy has the shape it has · ch.04
+- [[monitor]] — language construct whose mutual exclusion the compiler generates · ch.03
+- [[mounting]] — one transparent file-name tree instead of one per device · ch.05
+- [[multi-level-page-table]] — split the page number; second-level tables exist only where needed · ch.04
+- [[mutex]] — an owned lock; only the owner may unlock it · ch.03
+- [[mutual-exclusion]] — at most one process in the critical section; its four requirements · ch.03
+- [[nested-raid]] — RAID 0+1 and 1+0; why the order matters after a failure · ch.05
+- [[operating-system]] — manages resources, controls allocation, offers a virtual machine · ch.01
+- [[orphan-process]] — child whose parent died first; re-parented to PPID 1 · ch.01
+- [[page-and-frame]] — page = a block of virtual memory, frame = a block of physical memory, same size · ch.04
+- [[page-fault]] — access to a page in no frame; the MMU interrupts and the OS loads it · ch.04
+- [[page-fault-frequency]] — fault rate between bounds A and B controls how many frames a process gets · ch.04
+- [[page-locking]] — frames excluded from replacement: DMA transfers and shared memory · ch.04
+- [[page-replacement]] — which page to evict; the replacement policy and its three questions · ch.04
+- [[page-size]] — small pages mean big page tables, large pages mean internal fragmentation · ch.04
+- [[page-table]] — one per process: the i-th entry is the frame number of the i-th page · ch.04
+- [[page-table-entry]] — C, R, M, Prot, P plus the frame number · ch.04
+- [[paging]] — variant 2a: equal-sized pages in equal-sized frames, no external fragmentation · ch.04
+- [[parity-and-xor]] — redundancy computed, not copied; (a XOR b) XOR a = b · ch.05
+- [[partition]] — a logical part of a disk addressed like a physical one; one file system each · ch.05
+- [[physical-and-virtual-memory]] — what is built in vs. what the OS makes available · ch.04
+- [[pipe]] — ring buffer connecting two processes; the mechanism behind `\|` · ch.01
+- [[preemptive-and-non-preemptive-scheduling]] — can the CPU be withdrawn? the distinction that organises the strategies · ch.05
+- [[prepaging]] — load pages before they are demanded; pays off at process start · ch.04
+- [[process]] — a program in execution, with registers, PC, stack and variables · ch.01
+- [[process-control-block]] — all information belonging to one single process · ch.01
+- [[process-image]] — the total representation of a process in memory · ch.01
+- [[process-state-model]] — the 2-, 5- and 7-state models and their transitions · ch.01
+- [[process-switch]] — the 8 steps of handing the CPU to another process · ch.01
+- [[processor-registers]] — control/status vs. user-visible registers · ch.01
+- [[pthread-api]] — `pthread_create`, `pthread_exit`, `pthread_join`, `pthread_mutex_*`, `pthread_cond_*` · ch.02
+- [[race-condition]] — the result depends on the order of concurrent accesses · ch.03
+- [[raid]] — several disks as one logical disk; redundancy and parallelism, fully transparent · ch.05
+- [[raid-0]] — striping for speed; no redundancy at all · ch.05
+- [[raid-1]] — mirroring for safety; 50 % capacity · ch.05
+- [[raid-4]] — parity on one dedicated disk — which becomes the write bottleneck · ch.05
+- [[raid-5]] — parity distributed over all disks; the standard compromise · ch.05
+- [[raid-6]] — two independent parities; survives two simultaneous disk failures · ch.05
+- [[raid-consistent-update-problem]] — a multi-disk write must be atomic; the battery-backed write-ahead log · ch.05
+- [[ready-queue]] — the data structure behind the state Ready; FIFO, priority or round-robin · ch.05
+- [[relocation]] — a process may occupy different memory areas at different times · ch.04
+- [[resource]] — any allocatable hardware or software component (Betriebsmittel) · ch.01
+- [[resource-allocation-graph]] — processes, resources, allocation and request edges; cycles · ch.03
+- [[safe-state]] — a completion order for all processes exists; unsafe ≠ deadlocked · ch.03
+- [[scheduler]] — decides when processes are interrupted and which runs next · ch.01
+- [[scheduling-goals]] — the user’s goals and the system’s, and why they conflict · ch.05
+- [[semaphore]] — counter plus queue, with atomic `acquire()` and `release()` · ch.03
+- [[signal]] — asynchronous system message to a running process · ch.01
+- [[signal-handler]] — `sigaction`, signal masks, and the `sleep()` restart loop · ch.02
+- [[simultaneous-multithreading]] — one physical processor split into two logical ones · ch.02
+- [[solid-state-disk]] — non-volatile electronic storage; whole-block writes, no moving parts · ch.05
+- [[sparse-file]] — undefined regions cost no blocks; the file-system unmapped range · ch.05
+- [[spin-lock]] — busy waiting; pays off when the wait is shorter than a context switch · ch.03
+- [[starvation]] — a process waits indefinitely although the resource keeps becoming free · ch.03
+- [[static-partitioning]] — variant 1: fixed partitions, one per process, simple but wasteful · ch.04
+- [[swapping]] — moving a blocked process's data out to persistent storage · ch.01
+- [[system-call]] — the only door from user mode into the kernel; implemented as a trap · ch.01
+- [[thrashing]] — a just-displaced page is needed again; a few instructions per page load · ch.04
+- [[thread]] — sequential strand of execution sharing a process's code and data · ch.02
+- [[thread-control-block]] — PC, registers, thread-local stack and memory pointer · ch.02
+- [[thread-state-model]] — creation, blocking, unblocking, termination · ch.02
+- [[thread-switch]] — exchange the TCB only; much cheaper than a process switch · ch.02
+- [[time-slice]] — the quantum q; the single parameter that tunes round-robin · ch.05
+- [[translation-lookaside-buffer]] — fully associative cache of page-number to frame-number mappings · ch.04
+- [[trap]] — instruction-triggered interrupt: predictable and reproducible · ch.01
+- [[user-mode-and-kernel-mode]] — privilege separation and the mode bit · ch.01
+- [[virtual-machine]] — abstraction of the real hardware behind a simple interface · ch.01
+- [[volatile-and-persistent-memory]] — needs power to retain data, or does not · ch.05
+- [[wear-levelling]] — the SSD controller spreads writes over all cells · ch.05
+- [[working-set]] — the pages a process uses within a time interval · ch.04
+- [[write-through-and-write-back]] — pass every write on, or write back only on eviction · ch.04
+- [[zombie-process]] — terminated child whose record the parent has not yet collected · ch.01
+
+## Algorithms
+
+- [[bankers-algorithm]] — grant a request only if the resulting state stays safe · ch.03
+- [[clock-page-replacement]] — cyclic list, one Use bit, a rotating hand; cheap LRU approximation · ch.04
+- [[deadlock-detection-marking-algorithm]] — decide deadlock over R, V, A, Z matrices; two worked examples · ch.03
+- [[dining-philosophers]] — five forks: deadlock, livelock and starvation in one problem · ch.03
+- [[first-come-first-served]] — the FIFO ready queue; simple, starvation-free, bad for short jobs · ch.05
+- [[i-node]] — per-file index with direct and multiply indirect pointers · ch.05
+- [[lru-page-replacement]] — replace the page unused the longest; very good but costly · ch.04
+- [[not-recently-used]] — four classes from the R and M bits; pick at random from the lowest · ch.04
+- [[optimal-page-replacement]] — replace the page needed furthest in the future; the unreachable benchmark · ch.04
+- [[petersons-algorithm]] — software-only mutual exclusion for two processes · ch.03
+- [[priority-scheduling]] — highest priority first; preemptive and non-preemptive variants · ch.05
+- [[producer-consumer]] — bounded buffer with a mutex and two condition variables · ch.03
+- [[raid-parity-update]] — additive vs. subtractive parity recomputation; the small-write penalty · ch.05
+- [[round-robin]] — each process gets q in turn; 1/n of the CPU, at most (n−1)·q waiting · ch.05
+- [[shortest-process-next]] — shortest job first; optimal mean waiting time, starves long jobs · ch.05
+- [[test-and-set]] — one atomic hardware instruction as the basis of every lock · ch.03
+- [[ticket-spin-lock]] — FIFO tickets make a spin lock fair · ch.03
+
+## Sources
+- [[lecture-bs-1]] — lecture notes "BS – Klausurübersicht" + exercise recap, ch.01 · 23 pages · ingested 2026-09-30
+- [[lecture-bs-2]] — lecture notes on threads + exercise recap "Ex2", ch.02 · 8 pages · ingested 2026-09-30
+- [[lecture-bs-3]] — lecture notes on mutual exclusion & deadlocks + exercise recap "Ex3", ch.03 · 28 pages · ingested 2026-09-30
+- [[lecture-bs-4]] — lecture notes on memory management "BS-KVB" + exercise recap + 2 bonus sheets, ch.04 · 29 pages · ingested 2026-09-30
+- [[lecture-bs-5]] — lecture notes on scheduling and file systems “BS-KVB” + exercise recap, ch.05 · 35 pages · ingested 2026-09-30
+
+## Exam
+_None yet._
